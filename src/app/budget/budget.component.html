@@ -1,1 +1,41 @@
-<p>budget works!</p>
+<div class="card bg-light mb-3">
+  <div class="card-header">Presupuestos</div>
+  <div class="card-body">
+    <h5 class="card-title">Listado de presupuestos</h5>
+
+    <div class="my-2 text-left">
+    </div>
+    <div *ngIf="budgets?.length==0" class="alert alert-info">
+      No hay registros en la base de datos
+    </div>
+
+    <table class="table table-bordered table-striped" *ngIf="budgets?.length>0">
+      <thead>
+        <tr>
+          <th>numero</th>
+          <th>Fecha de creacion</th>
+          <th>Dias expiracion</th>
+          <th>Empresa</th>
+          <th>Cliente</th>
+          <th>Condicion de pago</th>
+          <th>Tipo de pago</th>
+          <th>Descuento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budget of budgets">
+          <td>{{ budget.numberBudget }}</td>
+          <td>{{ budget.creationDate }}</td>
+          <td>{{ budget.expirationDays }}</td>
+          <td>{{ budget.company.name }}</td>
+          <td>{{ budget.clientName }}</td>
+          <td>{{ budget.paymentCondition }}</td>
+          <td>{{ budget.payment.name }}</td>
+          <td>{{ budget.discount.value }}</td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
