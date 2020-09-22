@@ -14,6 +14,8 @@ export class BudgetService {
   constructor(private http: HttpClient) {}
 
   getBudgets(): Observable<Budget[]> {
+    // This could be another way of doing so.
+    // return this.http.get<Budget[]>(this.urlEndPoint);
     return this.http
       .get(this.urlEndPoint)
       .pipe(map((response) => response as Budget[]));
