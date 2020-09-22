@@ -1,4 +1,4 @@
-import { Company } from './company';
+import { Company } from '../company/company';
 import { Payment } from './payment';
 import { Discount } from './discount';
 

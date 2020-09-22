@@ -9,6 +9,12 @@
       No hay registros en la base de datos
     </div>
 
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/budgets/form']">
+        Alta Presupuesto
+      </button>
+    </div>
+
     <table class="table table-bordered table-striped" *ngIf="budgets?.length>0">
       <thead>
         <tr>
