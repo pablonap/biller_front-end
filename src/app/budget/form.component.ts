@@ -29,32 +29,26 @@ export class FormComponent implements OnInit {
     this.budgetDiscountLine.discount = new Discount();
   }
 
-  // actionsHandler(actionType) {
-  //   if (actionType === "add") {
-  //     console.log('>>> add');
-  //   } else if(actionType === "create") {
-  //     console.log('>>> create');
-  //   }
-  // }
+  manageAction(actionType: string): void {
+    if (actionType === "add") {
+      this.addDiscount();
+    } else if(actionType === "create") {
+      this.create();
+    }
+  }
 
   public create(): void {
-    // console.log('>>>', this.budget);
-    console.log('>>> CLICKED');
+    console.log('>>>', this.budget);
   }
-
-  /*
 
   addDiscount(): void {
-    // console.log('>>[form.component] ', this.budgetDiscountLine.discount.id)
-    // this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
+    console.log('>>[form.component] ', this.budgetDiscountLine.discount.id)
+    this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
 
-    // console.log('>>[form.component] length: ', this.budget.budgetDiscountLines.length);
-    // console.log('>>[form.component] array: ', this.budget.budgetDiscountLines);
+    console.log('>>[form.component] length: ', this.budget.budgetDiscountLines.length);
+    console.log('>>[form.component] array: ', this.budget.budgetDiscountLines);
 
-    // this.budgetDiscountLine = new BudgetDiscountLine();
-    // this.budgetDiscountLine.discount = new Discount();
-
-    console.log('addDiscount');
+    this.budgetDiscountLine = new BudgetDiscountLine();
+    this.budgetDiscountLine.discount = new Discount();
   }
-  */
 }
