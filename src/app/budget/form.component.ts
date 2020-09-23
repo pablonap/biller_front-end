@@ -44,6 +44,8 @@ export class FormComponent implements OnInit {
       this.addDiscount();
     } else if(actionType === "create") {
       this.create();
+    } else if(actionType === "remove") {
+      this.remove();
     }
   }
 
@@ -54,6 +56,11 @@ export class FormComponent implements OnInit {
   public getValueByIdDiscount(id: number): number {
     let valueDiscount = this.discounts[id].value;
     return valueDiscount;
+  }
+
+  public remove(): void {
+    this.budget.budgetDiscountLines = [];
+    this.selectedDiscounts = "";
   }
 
   addDiscount(): void {
