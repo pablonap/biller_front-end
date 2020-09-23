@@ -1,4 +1,4 @@
-<select [(ngModel)]="selectedCompany.id" class="custom-select">
+<select [(ngModel)]="budget.company.id" class="custom-select">
   <option *ngFor="let company of companies" value="{{ company.id }}">
     {{ company.name }}
   </option>

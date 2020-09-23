@@ -4,7 +4,7 @@
 
     <form (ngSubmit) = "create()">
       <div class="form-group row">
-        <label for="expirationDate" class="col-form-label col-sm-2">Expiracion (en dias)</label>
+        <label for="expirationDate" class="col-form-label col-sm-2">Validez (en dias)</label>
         <div class="col-sm-6">
           <input type="text" class="form-control" [(ngModel)]="budget.expirationDays" name="expirationDate">
         </div>
@@ -13,13 +13,36 @@
       <div class="form-group row">
         <label for="company" class="col-form-label col-sm-2">Empresa</label>
         <div class="col-sm-6">
-          <select-company></select-company>
+          <select-company [budget]="budget"></select-company>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="clientName" class="col-form-label col-sm-2">Nombre de cliente</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="budget.clientName" name="clientName">
+        </div>
+      </div>
+
+      <!-- <div class="form-group row">
+        <label for="clientName" class="col-form-label col-sm-2">Condicion de pago</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="budget.paymentCondition" name="clientName">
+        </div>
+      </div> -->
+
+      <div class="form-group row">
+        <label for="paymentCondition" class="col-form-label col-sm-2">Condicion de pago</label>
+        <div class="col-sm-6">
+        <select name="paymentCondition" [(ngModel)]="budget.paymentCondition" class="custom-select">
+            <option value={{item}} *ngFor="let item of paymentCondition">{{item}}</option>
+        </select>
         </div>
       </div>
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button">Crear</button>
+          <button class="btn btn-primary" role="button"  (click)='create()'>Generar</button>
         </div>
       </div>
     </form>
