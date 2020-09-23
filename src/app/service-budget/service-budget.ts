@@ -1,6 +1,6 @@
 export class ServiceBudget {
     id: number;
-    code: number;
+    code: string;
     name: string;
     detail: string;
     price: number;

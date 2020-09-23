@@ -6,6 +6,8 @@ import { Discount } from '../discount/discount';
 import { PaymentCondition } from '../payment-condition/payment-condition';
 import { BudgetDiscountLine } from '../budget-discount-line/budget-discount-line';
 import { DiscountService } from '../discount/discount.service';
+import { BudgetDetail } from '../budget-detail/budget-detail';
+import { ServiceBudget } from '../service-budget/service-budget';
 
 @Component({
   selector: 'app-form',
@@ -19,6 +21,7 @@ export class FormComponent implements OnInit {
   public titulo: string = 'Nuevo presupuesto';
   public paymentCondition: PaymentCondition = new PaymentCondition();
   public budgetDiscountLine: BudgetDiscountLine = new BudgetDiscountLine();
+  public budgetDetail: BudgetDetail = new BudgetDetail();
   public selectedDiscounts: string = "";
 
   discounts: Discount[];
@@ -33,8 +36,10 @@ export class FormComponent implements OnInit {
     this.budget.paymentCondition = this.paymentCondition;
 
     this.budget.budgetDiscountLines = new Array()
+    this.budget.budgetDetails = new Array()
 
     this.budgetDiscountLine.discount = new Discount();
+    this.budgetDetail.serviceBudget = new ServiceBudget();
 
     this.discountService.getDiscounts().subscribe((discounts) => (this.discounts = discounts));
   }
@@ -46,6 +51,10 @@ export class FormComponent implements OnInit {
       this.create();
     } else if(actionType === "remove") {
       this.remove();
+    } else if(actionType === "addServiceBudget") {
+      this.addServiceBudget();
+    } else if(actionType === "removeServiceBudgets") {
+      this.removeServiceBudgets();
     }
   }
 
@@ -63,6 +72,10 @@ export class FormComponent implements OnInit {
     this.selectedDiscounts = "";
   }
 
+  public removeServiceBudgets(): void {
+    this.budget.budgetDetails = [];
+  }
+
   addDiscount(): void {
     
     this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
@@ -75,4 +88,13 @@ export class FormComponent implements OnInit {
     this.budgetDiscountLine = new BudgetDiscountLine();
     this.budgetDiscountLine.discount = new Discount();
   }
+
+  addServiceBudget(): void {
+    
+    this.budget.budgetDetails.push(this.budgetDetail);
+
+    this.budgetDetail = new BudgetDetail();
+    this.budgetDetail.serviceBudget = new ServiceBudget();
+  }
+  
 }

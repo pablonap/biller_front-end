@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
-import { ServiceBudget } from './service-budget';
+import { Area } from './area';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ServiceBudgetService {
+export class AreaService {
   private urlEndPoint: string = 'http://localhost:8080/api/areas';
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient) {}
 
-  getServiceBudgets(id:any): Observable<ServiceBudget[]> {
+  getAreas(): Observable<Area[]> {
     return this.http
-      .get(`http://localhost:8080/api/areas/${id}/servicios`)
-      .pipe(map((response) => response as ServiceBudget[]));
+      .get(this.urlEndPoint)
+      .pipe(map((response) => response as Area[]));
   }
 }

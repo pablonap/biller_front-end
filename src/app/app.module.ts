@@ -17,6 +17,7 @@ import { PaymentConditionComponent } from './payment-condition/payment-condition
 import { BudgetDiscountLineComponent } from './budget-discount-line/budget-discount-line.component';
 import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
 import { ServiceBudgetComponent } from './service-budget/service-budget.component';
+import { AreaComponent } from './area/area.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,7 @@ const routes: Routes = [
     BudgetDiscountLineComponent,
     BudgetDetailComponent,
     ServiceBudgetComponent,
+    AreaComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)
