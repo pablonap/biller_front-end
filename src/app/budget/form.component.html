@@ -41,13 +41,15 @@
       <div class="form-group row">
         <label for="discount" class="col-form-label col-sm-2">Descuento</label>
         <div class="col-sm-6">
-          <select-discount [budget]="budget"></select-discount>
+          <select-discount [budgetDiscountLine]="budgetDiscountLine"></select-discount>
         </div>
+          <button class="btn btn-primary" role="button" >+</button>
+
       </div>
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button class="btn btn-primary" role="button"  (click)='create()'>Generar</button>
+          <button class="btn btn-primary" role="button">Generar</button>
         </div>
       </div>
     </form>
