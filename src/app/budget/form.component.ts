@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Budget } from './budget';
 import { Company } from '../company/company';
+import { Payment } from '../payment/payment';
 
 @Component({
   selector: 'app-form',
@@ -9,18 +10,18 @@ import { Company } from '../company/company';
 export class FormComponent implements OnInit {
   public budget: Budget = new Budget();
   public company: Company = new Company();
+  public payment: Payment = new Payment();
   public titulo: string = 'Nuevo presupuesto';
   public paymentCondition: number[] = [30, 60, 120];
 
   constructor() {}
 
   ngOnInit(): void {
-    this.budget.clientName = 'quito';
     this.budget.company = this.company;
+    this.budget.payment = this.payment;
   }
 
   public create(): void {
-    console.log('Clicked!');
     console.log('###', this.budget);
   }
 }

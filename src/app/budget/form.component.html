@@ -24,19 +24,19 @@
         </div>
       </div>
 
-      <!-- <div class="form-group row">
-        <label for="clientName" class="col-form-label col-sm-2">Condicion de pago</label>
-        <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="budget.paymentCondition" name="clientName">
-        </div>
-      </div> -->
-
       <div class="form-group row">
         <label for="paymentCondition" class="col-form-label col-sm-2">Condicion de pago</label>
         <div class="col-sm-6">
         <select name="paymentCondition" [(ngModel)]="budget.paymentCondition" class="custom-select">
             <option value={{item}} *ngFor="let item of paymentCondition">{{item}}</option>
         </select>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="company" class="col-form-label col-sm-2">Forma de pago</label>
+        <div class="col-sm-6">
+          <select-payment [budget]="budget"></select-payment>
         </div>
       </div>
 

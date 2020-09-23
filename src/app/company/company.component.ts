@@ -19,7 +19,6 @@ export class CompanyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // console.log('>>> [company]', this.budget)
     this.companyService.getCompanies().subscribe((companies) => (this.companies = companies));
   }
 }

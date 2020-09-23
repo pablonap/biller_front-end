@@ -1,5 +1,5 @@
 import { Company } from '../company/company';
-import { Payment } from './payment';
+import { Payment } from '../payment/payment';
 import { Discount } from './discount';
 
 export class Budget {
