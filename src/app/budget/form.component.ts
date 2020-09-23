@@ -5,6 +5,7 @@ import { Payment } from '../payment/payment';
 import { Discount } from '../discount/discount';
 import { PaymentCondition } from '../payment-condition/payment-condition';
 import { BudgetDiscountLine } from '../budget-discount-line/budget-discount-line';
+import { DiscountService } from '../discount/discount.service';
 
 @Component({
   selector: 'app-form',
@@ -18,15 +19,24 @@ export class FormComponent implements OnInit {
   public titulo: string = 'Nuevo presupuesto';
   public paymentCondition: PaymentCondition = new PaymentCondition();
   public budgetDiscountLine: BudgetDiscountLine = new BudgetDiscountLine();
+  public selectedDiscounts: string = "";
 
-  constructor() {}
+  discounts: Discount[];
+
+  constructor(
+    private discountService: DiscountService
+  ) {}
 
   ngOnInit(): void {
     this.budget.company = this.company;
     this.budget.payment = this.payment;
     this.budget.paymentCondition = this.paymentCondition;
+
     this.budget.budgetDiscountLines = new Array()
+
     this.budgetDiscountLine.discount = new Discount();
+
+    this.discountService.getDiscounts().subscribe((discounts) => (this.discounts = discounts));
   }
 
   manageAction(actionType: string): void {
@@ -41,9 +51,16 @@ export class FormComponent implements OnInit {
     console.log('>>>', this.budget);
   }
 
+  public getValueByIdDiscount(id: number): number {
+    let valueDiscount = this.discounts[id].value;
+    return valueDiscount;
+  }
+
   addDiscount(): void {
-    console.log('>>[form.component] ', this.budgetDiscountLine.discount.id)
+    
     this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
+
+    this.selectedDiscounts = this.selectedDiscounts + " " + String(this.getValueByIdDiscount(this.budgetDiscountLine.discount.id-1))
 
     console.log('>>[form.component] length: ', this.budget.budgetDiscountLines.length);
     console.log('>>[form.component] array: ', this.budget.budgetDiscountLines);
