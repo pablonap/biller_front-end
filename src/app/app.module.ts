@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { FormComponent } from './budget/form.component';
 import { CompanyComponent } from './company/company.component';
 import { PaymentComponent } from './payment/payment.component';
+import { DiscountComponent } from './discount/discount.component';
 
 
 const routes: Routes = [
@@ -29,6 +30,7 @@ const routes: Routes = [
     FormComponent,
     CompanyComponent,
     PaymentComponent,
+    DiscountComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)

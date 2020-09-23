@@ -1,0 +1,5 @@
+<select [(ngModel)]="budget.discount.id" class="custom-select">
+  <option *ngFor="let discount of discounts" value="{{ discount.id }}">
+    {{ discount.description }}
+  </option>
+</select>
