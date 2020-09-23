@@ -25,11 +25,9 @@
       </div>
 
       <div class="form-group row">
-        <label for="paymentCondition" class="col-form-label col-sm-2">Condicion de pago</label>
+        <label for="payment" class="col-form-label col-sm-2">Condicion de pago</label>
         <div class="col-sm-6">
-        <select name="paymentCondition" [(ngModel)]="budget.paymentCondition" class="custom-select">
-            <option value={{item}} *ngFor="let item of paymentCondition">{{item}}</option>
-        </select>
+          <select-payment-condition [budget]="budget"></select-payment-condition>
         </div>
       </div>
 

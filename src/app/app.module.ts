@@ -13,6 +13,7 @@ import { FormComponent } from './budget/form.component';
 import { CompanyComponent } from './company/company.component';
 import { PaymentComponent } from './payment/payment.component';
 import { DiscountComponent } from './discount/discount.component';
+import { PaymentConditionComponent } from './payment-condition/payment-condition.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,7 @@ const routes: Routes = [
     CompanyComponent,
     PaymentComponent,
     DiscountComponent,
+    PaymentConditionComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)

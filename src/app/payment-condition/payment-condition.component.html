@@ -1,0 +1,5 @@
+<select [(ngModel)]="budget.paymentCondition.id" class="custom-select">
+  <option *ngFor="let pc of paymentConditions" value="{{ pc.id }}">
+    {{ pc.days }}
+  </option>
+</select>
