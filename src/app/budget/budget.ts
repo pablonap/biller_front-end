@@ -1,6 +1,7 @@
 import { Company } from '../company/company';
 import { Payment } from '../payment/payment';
-import { Discount } from '../discount/discount';
+import { BudgetDiscountLine } from '../budget-discount-line/budget-discount-line';
+import { BudgetDetail } from '../budget-detail/budget-detail';
 import { PaymentCondition } from '../payment-condition/payment-condition';
 
 export class Budget {
@@ -12,6 +13,7 @@ export class Budget {
     clientName: string;
     paymentCondition: PaymentCondition;
     payment: Payment; 
-    discount: Discount;
-    budgetDetails: Array<Object>;
+    budgetDiscountLines: Array<BudgetDiscountLine>
+    budgetDetails: Array<BudgetDetail>;
+    totalAmount: number;
 }

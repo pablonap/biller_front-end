@@ -14,6 +14,9 @@ import { CompanyComponent } from './company/company.component';
 import { PaymentComponent } from './payment/payment.component';
 import { DiscountComponent } from './discount/discount.component';
 import { PaymentConditionComponent } from './payment-condition/payment-condition.component';
+import { BudgetDiscountLineComponent } from './budget-discount-line/budget-discount-line.component';
+import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
+import { ServiceBudgetComponent } from './service-budget/service-budget.component';
 
 
 const routes: Routes = [
@@ -33,6 +36,9 @@ const routes: Routes = [
     PaymentComponent,
     DiscountComponent,
     PaymentConditionComponent,
+    BudgetDiscountLineComponent,
+    BudgetDetailComponent,
+    ServiceBudgetComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)
