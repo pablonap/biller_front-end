@@ -30,8 +30,9 @@ const routes: Routes = [
   { path: 'budgets/form', component: FormComponent },
   { path: 'budgets/summary/:id', component: BudgetSummaryComponent },
   { path: 'budgets/form/:id', component: FormComponent },
-  { path: 'budgets/services', component: ServiceAbmComponent },
-  { path: 'budgets/service/form', component: ServiceFormComponent },
+  { path: 'service', component: ServiceAbmComponent },
+  { path: 'service/form', component: ServiceFormComponent },
+  { path: 'service/form/:id', component: ServiceFormComponent },
 ];
 
 @NgModule({

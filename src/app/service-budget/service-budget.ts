@@ -1,3 +1,5 @@
+import { Area } from '../area/area';
+
 export class ServiceBudget {
     id: number;
     code: string;
@@ -5,5 +7,5 @@ export class ServiceBudget {
     detail: string;
     price: number;
     optional: boolean;
-    areaId: number;
+    area: Area;
 }
