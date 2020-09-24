@@ -37,4 +37,8 @@ export class ServiceBudgetService {
     return this.http.get<ServiceBudget>(`${this.urlEndPoint}/${id}`)
   }
 
+  delete(id: number): Observable<ServiceBudget>{
+    return this.http.delete<ServiceBudget>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+  }
+
 }

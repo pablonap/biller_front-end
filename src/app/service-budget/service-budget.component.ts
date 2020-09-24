@@ -8,7 +8,7 @@ import { ServiceBudgetService } from './service-budget.service';
 })
 export class ServiceBudgetComponent implements OnInit {
   serviceBudgets: ServiceBudget[];
-  public selectedSb: ServiceBudget = { id: 0, code: '', name: '', detail: '', price: 0, optional: false, areaId: 0}
+  public selectedSb: ServiceBudget = { id: 0, code: '', name: '', detail: '', price: 0, optional: false, area: null}
   constructor(private serviceBudgetService: ServiceBudgetService) {}
 
   ngOnInit(): void {
