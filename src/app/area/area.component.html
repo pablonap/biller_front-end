@@ -1,10 +1,10 @@
-<select [(ngModel)]="selectedArea.id" (change)="onSelect($event.target.value)" class="custom-select">
+<select [(ngModel)]="selectedArea.id" (change)="onSelect($event.target.value)" class="form-control custom-select">
   <option *ngFor="let area of areas" value="{{ area.id }}">
     {{ area.name }}
   </option>
 </select>
 
-<select [(ngModel)]="budgetDetail.serviceBudget.id" class="custom-select">
+<select [(ngModel)]="budgetDetail.serviceBudget.id" class="form-control custom-select">
   <option *ngFor="let sb of serviceBudgets" value="{{ sb.id }}">
     {{ sb.name }}
   </option>
