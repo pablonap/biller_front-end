@@ -41,6 +41,8 @@ export class ServiceFormComponent implements OnInit {
   manageAction(actionType: string): void {
     if (actionType === 'create') {
       this.create();
+    } else if(actionType === 'update') {
+      this.update();
     }
   }
 
@@ -51,4 +53,14 @@ export class ServiceFormComponent implements OnInit {
         this.router.navigate(['/service']);
       });
   }
+
+  update():void{
+    this.serviceBudgetService.update(this.serviceBudget)
+    .subscribe( budget => {
+      this.router.navigate(['/service'])
+    }
+
+    )
+  }
 }
+
