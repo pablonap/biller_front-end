@@ -19,6 +19,7 @@ import { BudgetDetailComponent } from './budget-detail/budget-detail.component';
 import { ServiceBudgetComponent } from './service-budget/service-budget.component';
 import { AreaComponent } from './area/area.component';
 import { BudgetSummaryComponent } from './budget-summary/budget-summary.component';
+import { ServiceAbmComponent } from './service-abm/service-abm.component';
 
 
 const routes: Routes = [
@@ -27,6 +28,7 @@ const routes: Routes = [
   { path: 'budgets/form', component: FormComponent },
   { path: 'budgets/summary/:id', component: BudgetSummaryComponent },
   { path: 'budgets/form/:id', component: FormComponent },
+  { path: 'services', component: ServiceAbmComponent },
 ];
 
 @NgModule({
@@ -45,6 +47,7 @@ const routes: Routes = [
     ServiceBudgetComponent,
     AreaComponent,
     BudgetSummaryComponent,
+    ServiceAbmComponent,
   ],
   imports: [
     BrowserModule, HttpClientModule, FormsModule, RouterModule.forRoot(routes)
