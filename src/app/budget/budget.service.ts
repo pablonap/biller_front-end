@@ -20,4 +20,8 @@ export class BudgetService {
       .get(this.urlEndPoint)
       .pipe(map((response) => response as Budget[]));
   }
+
+  create(budget: Budget) : Observable<Budget> {
+    return this.http.post<Budget>(this.urlEndPoint, budget, {headers: this.httpHeaders})
+  }
 }
