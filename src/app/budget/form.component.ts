@@ -153,13 +153,21 @@ export class FormComponent implements OnInit {
   }
 
   update():void{
-    this.budgetService.update(this.budget)
-    .subscribe( budget => {
-      this.router.navigate(['/budgets'])
-    }
 
-    )
+    if(this.budget.expirationDays != null &&
+      this.budget.company != null &&
+      this.budget.clientName !== null &&
+      this.budget.paymentCondition !== null &&
+      this.budget.paymentCondition !== null &&
+      this.budget.budgetDetails !== null && this.budget.budgetDetails.length > 0) {
+
+        this.budgetService.update(this.budget)
+        .subscribe( budget => {
+          this.router.navigate(['/budgets'])
+        })
+      } else {
+        alert('Completar campos obligatorios (*)')
+      }
   }
-
   
 }
