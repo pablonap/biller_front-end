@@ -1,0 +1,5 @@
+<select [(ngModel)]="serviceBudget.areaId" class="form-control custom-select">
+  <option *ngFor="let area of areas" value="{{ area.id }}">
+    {{ area.name }}
+  </option>
+</select>

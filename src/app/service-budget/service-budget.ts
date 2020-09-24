@@ -5,4 +5,5 @@ export class ServiceBudget {
     detail: string;
     price: number;
     optional: boolean;
+    areaId: number;
 }
