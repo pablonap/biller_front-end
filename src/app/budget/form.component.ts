@@ -126,8 +126,8 @@ export class FormComponent implements OnInit {
 
   addDiscount(): void {
     
-    if(this.budget.budgetDiscountLines !== null && 
-      this.budget.budgetDiscountLines.length > 0 ) {
+    if(this.budgetDiscountLine !== null && 
+      this.budgetDiscountLine.discount.id > 0 ) {
 
       this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
 
