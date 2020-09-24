@@ -91,11 +91,23 @@ export class FormComponent implements OnInit {
   }
 
   public create(): void {
-    this.budgetService.create(this.budget).subscribe(
-      budget => {
-        this.router.navigate(['/budgets'])  
+
+    if(this.budget.expirationDays != null &&
+      this.budget.company != null &&
+      this.budget.clientName !== null &&
+      this.budget.paymentCondition !== null &&
+      this.budget.paymentCondition !== null &&
+      this.budget.budgetDetails !== null && this.budget.budgetDetails.length > 0) {
+
+        this.budgetService.create(this.budget).subscribe(
+          budget => {
+            this.router.navigate(['/budgets'])  
+          }
+        )
+      } else {
+        alert('Completar campos obligatorios (*)')
       }
-    )
+
   }
 
   public getValueByIdDiscount(id: number): number {
@@ -127,11 +139,17 @@ export class FormComponent implements OnInit {
   }
 
   addServiceBudget(): void {
-    
-    this.budget.budgetDetails.push(this.budgetDetail);
 
-    this.budgetDetail = new BudgetDetail();
-    this.budgetDetail.serviceBudget = new ServiceBudget();
+    if(this.budgetDetail !== null
+      && this.budgetDetail.serviceBudget.id > 0
+      && this.budgetDetail.amount > 0
+      ) {
+        this.budget.budgetDetails.push(this.budgetDetail);
+
+        this.budgetDetail = new BudgetDetail();
+        this.budgetDetail.serviceBudget = new ServiceBudget();
+    }
+
   }
 
   update():void{
