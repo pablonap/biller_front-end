@@ -49,8 +49,6 @@ export class FormComponent implements OnInit {
 
         this.loadBudget();
 
-        // console.log('>>> BUD: ', this.budget)
-
     this.discountService.getDiscounts().subscribe((discounts) => (this.discounts = discounts));
   }
 
@@ -58,7 +56,6 @@ export class FormComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       let id = params['id']
       if(id){
-        console.log('>>>>> INSIDE')
         this.budgetService.getBudget(id).subscribe( (budget) => {
           this.budget = budget;
 
@@ -72,7 +69,6 @@ export class FormComponent implements OnInit {
             this.selectedDiscounts = this.selectedDiscounts + " " +  String(budgetDiscountLine.discount.value);
           })
 
-          console.log('??????', this.budget)
         })
       }    
     })
@@ -121,9 +117,6 @@ export class FormComponent implements OnInit {
     this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
 
     this.selectedDiscounts = this.selectedDiscounts + " " + String(this.getValueByIdDiscount(this.budgetDiscountLine.discount.id-1))
-
-    console.log('>>[form.component] length: ', this.budget.budgetDiscountLines.length);
-    console.log('>>[form.component] array: ', this.budget.budgetDiscountLines);
 
     this.budgetDiscountLine = new BudgetDiscountLine();
     this.budgetDiscountLine.discount = new Discount();
