@@ -32,4 +32,8 @@ export class BudgetService {
   getBudget(id): Observable<Budget>{
     return this.http.get<Budget>(`${this.urlEndPoint}/${id}`)
   }
+
+  delete(id: number): Observable<Budget>{
+    return this.http.delete<Budget>(`${this.urlEndPoint}/${id}`, {headers: this.httpHeaders})
+  }
 }
