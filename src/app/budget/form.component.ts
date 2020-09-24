@@ -114,12 +114,16 @@ export class FormComponent implements OnInit {
 
   addDiscount(): void {
     
-    this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
+    if(this.budget.budgetDiscountLines !== null && 
+      this.budget.budgetDiscountLines.length > 0 ) {
 
-    this.selectedDiscounts = this.selectedDiscounts + " " + String(this.getValueByIdDiscount(this.budgetDiscountLine.discount.id-1))
+      this.budget.budgetDiscountLines.push(this.budgetDiscountLine);
 
-    this.budgetDiscountLine = new BudgetDiscountLine();
-    this.budgetDiscountLine.discount = new Discount();
+      this.selectedDiscounts = this.selectedDiscounts + " " + String(this.getValueByIdDiscount(this.budgetDiscountLine.discount.id-1))
+
+      this.budgetDiscountLine = new BudgetDiscountLine();
+      this.budgetDiscountLine.discount = new Discount();
+    }
   }
 
   addServiceBudget(): void {
