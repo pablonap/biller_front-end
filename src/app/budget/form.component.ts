@@ -35,17 +35,42 @@ export class FormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.budget.company = this.company;
-    this.budget.payment = this.payment;
-    this.budget.paymentCondition = this.paymentCondition;
 
-    this.budget.budgetDiscountLines = new Array()
-    this.budget.budgetDetails = new Array()
+        this.budget.company = this.company;
+        this.budget.payment = this.payment;
+        this.budget.paymentCondition = this.paymentCondition;
 
-    this.budgetDiscountLine.discount = new Discount();
-    this.budgetDetail.serviceBudget = new ServiceBudget();
+        this.budget.budgetDiscountLines = new Array()
+        this.budget.budgetDetails = new Array()
+
+        this.budgetDiscountLine.discount = new Discount();
+
+        this.budgetDetail.serviceBudget = new ServiceBudget();
+
+        this.loadBudget();
+
+        // console.log('>>> BUD: ', this.budget)
 
     this.discountService.getDiscounts().subscribe((discounts) => (this.discounts = discounts));
+  }
+
+  loadBudget(): void{
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id']
+      if(id){
+        console.log('>>>>> INSIDE')
+        this.budgetService.getBudget(id).subscribe( (budget) => {
+          this.budget = budget;
+
+          this.budget.company = budget.company;
+          this.budget.payment = budget.payment;
+          this.budget.paymentCondition = budget.paymentCondition;
+          this.budget.budgetDiscountLines = budget.budgetDiscountLines;
+          this.budget.budgetDetails = budget.budgetDetails;
+          console.log('??????', this.budget)
+        })
+      }    
+    })
   }
 
   manageAction(actionType: string): void {
@@ -59,11 +84,12 @@ export class FormComponent implements OnInit {
       this.addServiceBudget();
     } else if(actionType === "removeServiceBudgets") {
       this.removeServiceBudgets();
+    } else if(actionType === "update") {
+      this.update();
     }
   }
 
   public create(): void {
-    console.log('>>>', this.budget);
     this.budgetService.create(this.budget).subscribe(
       budget => {
         this.router.navigate(['/budgets'])  
@@ -104,6 +130,15 @@ export class FormComponent implements OnInit {
 
     this.budgetDetail = new BudgetDetail();
     this.budgetDetail.serviceBudget = new ServiceBudget();
+  }
+
+  update():void{
+    this.budgetService.update(this.budget)
+    .subscribe( budget => {
+      this.router.navigate(['/budgets'])
+    }
+
+    )
   }
 
   

@@ -24,4 +24,12 @@ export class BudgetService {
   create(budget: Budget) : Observable<Budget> {
     return this.http.post<Budget>(this.urlEndPoint, budget, {headers: this.httpHeaders})
   }
+
+  update(budget: Budget): Observable<Budget>{
+    return this.http.put<Budget>(`${this.urlEndPoint}/${budget.id}`, budget, {headers: this.httpHeaders})
+  }
+
+  getBudget(id): Observable<Budget>{
+    return this.http.get<Budget>(`${this.urlEndPoint}/${id}`)
+  }
 }

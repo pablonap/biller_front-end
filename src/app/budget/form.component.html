@@ -126,13 +126,19 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <button
+          <!-- <button
             class="btn btn-primary"
             role="button"
             (click)="manageAction('create')"
           >
             Generar
-          </button>
+          </button> -->
+
+          <button class="btn btn-primary form-group row" role="button" (click)="manageAction('create')" *ngIf="!budget.id else elseBlock">Generar</button>
+
+            <ng-template #elseBlock>
+                <button class="btn btn-primary form-group row" role="button" (click)="manageAction('update')">Editar</button>
+            </ng-template>
         </div>
       </div>
     </form>
