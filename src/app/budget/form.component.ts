@@ -67,6 +67,11 @@ export class FormComponent implements OnInit {
           this.budget.paymentCondition = budget.paymentCondition;
           this.budget.budgetDiscountLines = budget.budgetDiscountLines;
           this.budget.budgetDetails = budget.budgetDetails;
+
+          this.budget.budgetDiscountLines.forEach((budgetDiscountLine) => {
+            this.selectedDiscounts = this.selectedDiscounts + " " +  String(budgetDiscountLine.discount.value);
+          })
+
           console.log('??????', this.budget)
         })
       }    

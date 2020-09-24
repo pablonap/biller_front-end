@@ -84,7 +84,8 @@
           >
             +
           </button>
-          Descuentos Selecionados: {{ this.selectedDiscounts }}
+          <span *ngIf="selectedDiscounts.length > 0">Descuentos Selecionados: {{ this.selectedDiscounts }}</span>
+          
         </div>
       </div>
 
