@@ -29,13 +29,11 @@ export class ServiceFormComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       let id = params['id'];
       if (id) {
-        console.log('ADENTRO')
         this.serviceBudgetService
           .getServiceBudgetById(id)
           .subscribe((serviceBudget) => (this.serviceBudget = serviceBudget));
       }
     });
-    console.log('>>> ', this.serviceBudget)
   }
 
   manageAction(actionType: string): void {
@@ -47,20 +45,47 @@ export class ServiceFormComponent implements OnInit {
   }
 
   public create(): void {
-    this.serviceBudgetService
-      .create(this.serviceBudget)
-      .subscribe((serviceBudget) => {
-        this.router.navigate(['/service']);
-      });
+
+    if(this.serviceBudget !== null 
+      && this.serviceBudget.code !== null
+      && this.serviceBudget.name !== null
+      && this.serviceBudget.detail !== null
+      && this.serviceBudget.price !== null
+      && this.serviceBudget.area !== null
+      && this.serviceBudget.area.id > 0) {
+
+      this.serviceBudgetService
+        .create(this.serviceBudget)
+        .subscribe((serviceBudget) => {
+          this.router.navigate(['/service']);
+        });
+      } else {
+        alert("Completar campos obligatorios (*)")
+      }
+
   }
 
   update():void{
-    this.serviceBudgetService.update(this.serviceBudget)
-    .subscribe( budget => {
-      this.router.navigate(['/service'])
-    }
 
-    )
+    if(this.serviceBudget !== null 
+      && this.serviceBudget.code !== null
+      && this.serviceBudget.name !== null
+      && this.serviceBudget.detail !== null
+      && this.serviceBudget.price !== null
+      && this.serviceBudget.area !== null
+      && this.serviceBudget.area.id > 0) {
+
+      this.serviceBudgetService.update(this.serviceBudget)
+      .subscribe( budget => {
+        this.router.navigate(['/service'])
+      })
+
+      } else {
+        alert("Completar campos obligatorios (*)")
+      }
+
+
+
   }
 }
 
