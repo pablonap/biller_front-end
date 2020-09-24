@@ -25,7 +25,7 @@
           <th>Cliente</th>
           <th>Condicion de pago</th>
           <th>Tipo de pago</th>
-          <th>Descuento</th>
+          <th>Accion</th>
         </tr>
       </thead>
       <tbody>
@@ -35,11 +35,9 @@
           <td>{{ budget.expirationDays }}</td>
           <td>{{ budget.company.name }}</td>
           <td>{{ budget.clientName }}</td>
-          <td>{{ budget.paymentCondition }}</td>
+          <td>{{ budget.paymentCondition.days }} dias</td>
           <td>{{ budget.payment.name }}</td>
-          <!-- <td>{{ budget.discount.value }}</td> -->
-          <td>
-          </td>
+          <td><button class="btn btn-warning btn-sm">Ver</button><button class="btn btn-success btn-sm">Editar</button><button class="btn btn-danger btn-sm">Borrar</button></td>
         </tr>
       </tbody>
     </table>
