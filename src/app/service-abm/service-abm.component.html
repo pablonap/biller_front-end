@@ -1,1 +1,46 @@
-<p>service-abm works!</p>
+<div class="card bg-light mb-3">
+  <div class="card-header">Servicios</div>
+  <div class="card-body">
+    <h5 class="card-title">Listado de servicios</h5>
+
+    <div class="my-2 text-left">
+    </div>
+
+    <div class="my-2 text-left">
+      <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/budgets/form']">
+        Alta Servicio
+      </button>
+    </div>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Codigo</th>
+          <th>Nombre</th>
+          <th>Detalle</th>
+          <th>Precio</th>
+          <th>Opcional</th>
+          <th>Condicion de pago</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let serviceBudget of serviceBudgets">
+          <td>{{ serviceBudget.code }}</td>
+          <td>{{ serviceBudget.name }}</td>
+          <td>{{ serviceBudget.detail }}</td>
+          <td>{{ serviceBudget.price }}</td>
+          <td>{{ serviceBudget.optional }}</td>
+          <td>
+            <button 
+              class="btn btn-warning btn-sm"
+              type="button"
+              name="editar"
+              [routerLink]="['/services-abm/form', serviceBudget.id]"
+              >Editar</button>
+            <button class="btn btn-danger btn-sm">Borrar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
