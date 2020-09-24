@@ -8,6 +8,7 @@ import { BudgetDiscountLine } from '../budget-discount-line/budget-discount-line
 import { DiscountService } from '../discount/discount.service';
 import { BudgetDetail } from '../budget-detail/budget-detail';
 import { ServiceBudget } from '../service-budget/service-budget';
+import {ServiceBudgetService} from '../service-budget/service-budget.service'
 import { BudgetService } from './budget.service';
 import {Router, ActivatedRoute} from '@angular/router'
 
@@ -29,6 +30,7 @@ export class FormComponent implements OnInit {
   discounts: Discount[];
 
   constructor(
+    private serviceBudgetService: ServiceBudgetService,
     private discountService: DiscountService,
     private budgetService: BudgetService,
     private router: Router,
@@ -144,10 +146,20 @@ export class FormComponent implements OnInit {
       && this.budgetDetail.serviceBudget.id > 0
       && this.budgetDetail.amount > 0
       ) {
+        this.serviceBudgetService
+        .getServiceBudgetById(this.budgetDetail.serviceBudget.id)
+        .subscribe(serviceDb => {
+          this.budgetDetail.serviceBudget = serviceDb
+
         this.budget.budgetDetails.push(this.budgetDetail);
 
         this.budgetDetail = new BudgetDetail();
         this.budgetDetail.serviceBudget = new ServiceBudget();
+
+
+        console.log('>>>', this.budget.budgetDetails)
+        })
+
     }
 
   }
