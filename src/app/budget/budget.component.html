@@ -37,7 +37,18 @@
           <td>{{ budget.clientName }}</td>
           <td>{{ budget.paymentCondition.days }} dias</td>
           <td>{{ budget.payment.name }}</td>
-          <td><button class="btn btn-warning btn-sm">Ver</button><button class="btn btn-success btn-sm">Editar</button><button class="btn btn-danger btn-sm">Borrar</button></td>
+          <td>
+            <button
+              type="button"
+              name="editar"
+              [routerLink]="['/budgets/summary', budget.id]"
+              class="btn btn-success btn-sm"
+            >
+              Ver
+            </button>
+            <button class="btn btn-warning btn-sm">Editar</button>
+            <button class="btn btn-danger btn-sm">Borrar</button>
+          </td>
         </tr>
       </tbody>
     </table>

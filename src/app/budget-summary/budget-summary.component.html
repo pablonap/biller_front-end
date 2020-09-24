@@ -1,0 +1,46 @@
+<div class="card bg-light mb-3">
+  <div class="card-header">Resumen</div>
+  <div class="card-body">
+    <div class="my-2 text-left">
+    </div>
+
+    <h5 class="card-title">Servicios seleccionados</h5>
+    <table class="table table-bordered table-striped" *ngIf="budget">
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>Detalle</th>
+          <th>Precio unitario</th>
+          <th>Importe total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budgetDetail of budget.budgetDetails">
+          <td>{{ budgetDetail.amount }}</td>
+          <td>{{ budgetDetail.serviceDescription }}</td>
+          <td>{{ budgetDetail.unitPrice }}</td>
+          <td>{{ budgetDetail.totalAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h5 class="card-title">Detalle de descuentos</h5>
+    <table class="table table-bordered table-striped" *ngIf="budget">
+      <thead>
+        <tr>
+          <th>Descripcion</th>
+          <th>Valor (en %)</th>
+          <th>Precio con descuento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budgetDiscountLine of budget.budgetDiscountLines">
+          <td>{{ budgetDiscountLine.discount.description }}</td>
+          <td>{{ budgetDiscountLine.discount.value }}</td>
+          <td>{{ budgetDiscountLine.amountWithDiscount }}</td>
+        </tr>
+        <h3>Total: {{ budget.totalAmount }}</h3>
+      </tbody>
+    </table>
+  </div>
+</div>
