@@ -4,8 +4,8 @@
     <div class="my-2 text-left">
     </div>
 
-    <h5 class="card-title">Servicios seleccionados</h5>
-    <table class="table table-bordered table-striped" *ngIf="budget">
+    <h5 class="card-title">Servicios seleccionados (no opcionales)</h5>
+    <table class="table table-bordered table-striped"*ngIf="budget">
       <thead>
         <tr>
           <th>Cantidad</th>
@@ -15,11 +15,31 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let budgetDetail of budget.budgetDetails">
-          <td>{{ budgetDetail.amount }}</td>
-          <td>{{ budgetDetail.serviceDescription }}</td>
-          <td>{{ budgetDetail.unitPrice }}</td>
-          <td>{{ budgetDetail.totalAmount }}</td>
+        <tr *ngFor="let budgetDetail of budget.budgetDetails" >
+          <td *ngIf="!budgetDetail.serviceBudget.optional">{{ budgetDetail.amount }}</td>
+          <td *ngIf="!budgetDetail.serviceBudget.optional">{{ budgetDetail.serviceDescription }}</td>
+          <td *ngIf="!budgetDetail.serviceBudget.optional">{{ budgetDetail.unitPrice }}</td>
+          <td *ngIf="!budgetDetail.serviceBudget.optional">{{ budgetDetail.totalAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <h5 class="card-title">Servicios seleccionados (opcionales)</h5>
+    <table class="table table-bordered table-striped"*ngIf="budget">
+      <thead>
+        <tr>
+          <th>Cantidad</th>
+          <th>Detalle</th>
+          <th>Precio unitario</th>
+          <th>Importe total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let budgetDetail of budget.budgetDetails" >
+          <td *ngIf="budgetDetail.serviceBudget.optional">{{ budgetDetail.amount }}</td>
+          <td *ngIf="budgetDetail.serviceBudget.optional">{{ budgetDetail.serviceDescription }}</td>
+          <td *ngIf="budgetDetail.serviceBudget.optional">{{ budgetDetail.unitPrice }}</td>
+          <td *ngIf="budgetDetail.serviceBudget.optional">{{ budgetDetail.totalAmount }}</td>
         </tr>
       </tbody>
     </table>
